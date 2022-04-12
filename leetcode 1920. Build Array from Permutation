@@ -8,3 +8,6 @@ class Solution {
         return ans;
     }
 }
+
+
+創建array是以array內數值作為導引~
