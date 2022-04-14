@@ -10,15 +10,15 @@
  */
 class Solution {
     public ListNode reverseList(ListNode head) {
-        ListNode prev = null; 
-        ListNode curr = head;
+        ListNode prev = null;  //須建立前一個
+        ListNode curr = head;   //自己
         while(curr != null){
-            ListNode forward = curr.next;
-            curr.next = prev;
-            prev = curr;
-            curr = forward;
+            ListNode forward = curr.next;   //下一個節點要先存著 不然會被蓋掉
+            curr.next = prev; //把現在節電的線連到上個節點
+            prev = curr;    //把上個節點變成現在節點
+            curr = forward; //把現在節點變成下個節點
         }
-        return prev;
+        return prev;    //因為prev這時候等於head
     }
 }
         
