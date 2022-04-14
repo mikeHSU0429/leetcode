@@ -1,0 +1,38 @@
+/**
+ * Definition for singly-linked list.
+ * class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode(int x) {
+ *         val = x;
+ *         next = null;
+ *     }
+ * }
+ */
+public class Solution {
+    public boolean hasCycle(ListNode head) {
+    //利用快慢指針來找尋loop
+       if(head==null||head.next==null) //首先判斷整個linklist是否為空
+           return false;
+       else
+       {
+           ListNode fast = head; 
+           ListNode slow = head;
+           
+           while(fast!=null && fast.next!=null) //要確定整個linklst有迴圈
+           {
+               fast= fast.next.next;
+               slow = slow.next;
+               if(fast==slow)//代表有迴圈哦 終究會趕上
+               {
+                   return true;
+               } 
+           }
+       }     
+        
+    
+        return false;
+        
+            
+    }
+}
