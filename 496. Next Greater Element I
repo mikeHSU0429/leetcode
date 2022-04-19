@@ -1,0 +1,40 @@
+    // For final result number : greater number
+    Map<Integer, Integer> map = new HashMap<>();
+    
+
+    Stack<Integer> stack = new Stack<Integer>();
+    
+    
+    for(int element : nums2)
+    {
+        while(!stack.isEmpty() && element > stack.peek()) // Found greater element for top element of stack
+        {
+            map.put(stack.pop() , element); // Add in the map // For result
+        }
+ 
+        stack.push(element);        
+    }
+    // round 1 //push1  //map()    
+    // round 2 //pop1  //map(1 3) // push 3
+    // round 3 //pop3  //map(1 3) (3 4)// push 4      此時stack-> 4,2
+
+
+
+
+
+
+
+
+    int[] result = new int[nums1.length];
+    
+    // What are left in stack does not have any greater element so they are not in map 
+    for(int i=0 ; i< nums1.length; i++)
+    {
+        result[i] = map.getOrDefault(nums1[i], -1);
+    }
+    //result[0]=-1,result[1]=3,result[2]=-1;
+    
+    return result;
+    
+}
+}
