@@ -1,0 +1,16 @@
+class Solution {
+    public String intToRoman(int num) {
+    int [] array = {1000,900,500,400,100,90,50,40,10,9,5,4,1}; //建立dic
+    String [] roman ={"M","CM","D","CD","C","XC","L","XL","X","IX","V","IV","I"}; //建立 dic
+    StringBuilder a = new StringBuilder();  
+    for(int i =0;i<array.length;i++)
+    {
+        while(num>=array[i]) //num大於array裡面的任何一個數字就減去該數字並把該數字轉換為roman
+        {
+            a.append(roman[i]);
+            num-=array[i];
+        }
+    }
+    return a.toString();
+    }
+}
