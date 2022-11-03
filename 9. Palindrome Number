@@ -1,0 +1,16 @@
+//原本想嘗試用reverse來解題但不行 最後決定用雙指標來解題
+class Solution:
+    def isPalindrome(self, x: int) -> bool:
+        list1 = list(str(x))
+        j = len(list1)-1
+        for i in range(len(list1)):
+            print(j)
+            if i >=j : //停止點
+                return True
+            elif list1[i]==list1[j]:  //相等就繼續
+                j = j-1
+                continue
+            else:               //不相等就停止
+                return 0
+
+        
