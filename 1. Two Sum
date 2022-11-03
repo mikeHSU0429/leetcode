@@ -1,0 +1,13 @@
+//利用hashmap跟dictionary來解題
+
+class Solution:
+   def twoSum(self, nums: List[int], target: int) -> List[int]:
+       seen = {}
+       for i, value in enumerate(nums):
+           remaining = target - nums[i]  //將目標與元素相減
+           
+           if remaining in seen:  //利用相差直去找是否在seen的key中
+               return [i, seen[remaining]]    
+            
+           seen[value] = i  //seen{相差直:索引直}
+    
