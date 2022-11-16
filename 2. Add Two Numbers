@@ -1,0 +1,36 @@
+/**
+ * Definition for singly-linked list.
+ * public class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode() {}
+ *     ListNode(int val) { this.val = val; }
+ *     ListNode(int val, ListNode next) { this.val = val; this.next = next; } //此為LISTNODE構造器
+ * }
+ */
+class Solution {
+    public ListNode addTwoNumbers(ListNode l1, ListNode l2) { 
+        int carry = 0;
+        ListNode sol = new ListNode(); //創建一個LISTNODE用於答案
+        ListNode start = sol; //將START指標指向SOL
+        while(l1!=null || l2!=null || carry!=0)
+        {
+            int x = (l1!=null)?l1.val:0;
+            int y = (l2!=null)?l2.val:0;
+            int sum = (x+y+carry)%10;
+            carry = (x+y+carry)/10;
+            start.next = new ListNode(sum); //創建一個新節點並放入SUM值 之後將其放入START.NEXT中
+            start = start.next; //推進
+            if(l1!=null)
+            {
+                l1=l1.next;
+            }
+            if(l2!=null)
+            {
+                l2=l2.next;
+            }
+        }
+        // System.out.print(l1);
+    return sol.next;  //回傳從START.NEXT地方也就是SOL.NEXT開始回傳
+    }
+}
