@@ -1,0 +1,43 @@
+class Solution {
+    public String longestCommonPrefix(String[] strs) {
+    // System.out.print(strs[0].charAt(0));
+    String ans = "";
+    int min = 201;
+    int point = 0;
+    for(int i =0;i<strs.length;i++) //此迴圈會確定字串的最小長度 ["flower","flow","flight"] 以flow為主跑外圍迴圈
+    {
+        min = Math.min(min,strs[i].length());
+    }
+    if(strs.length==1) return strs[0]; //只有一個字串該字串則為答案
+
+    // System.out.print(min);
+    else{
+    for(int j = 0; j<min ;j++) //外圍迴圈為判斷第幾個字
+    {
+        if(point == 0) //設一個變數 當內圈有判斷不一樣 則break
+        {
+            for(int k =1;k<strs.length;k++) //從strs[1]開始判斷 接續為strs[2] strs[3]
+            {
+          if(strs[0].charAt(j)==strs[k].charAt(j)){ //判斷所有自串該位置的字是不是依樣
+              //System.out.println("strs[0].charAt(j)=="+strs[0].charAt(j) + " "+ "strs[k].charAt(j)==" + strs[k].charAt(j));
+              //System.out.println("j="+j + ""+ "k=" + k +"same");
+              if(k==strs.length-1){ //當迴圈來到最後一回 則知道這個字元大家都依樣
+                ans += strs[k].charAt(j); 
+                //System.out.println("ans: "+ans);  
+              }
+              else {continue;}} //迴圈不為最後一回則繼續
+            
+          else {
+              point=1;  //當有不一樣就在下個迴圈break
+              break;
+              }
+            }
+          
+            
+        }
+        else break;
+    }}
+    return ans;   
+
+    }
+}
