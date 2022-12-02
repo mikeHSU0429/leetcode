@@ -1,0 +1,42 @@
+class Solution {
+    public ListNode mergeTwoLists(ListNode list1, ListNode list2) {
+        ListNode sol = new ListNode();
+        ListNode curr=sol;
+        ListNode head = sol;
+        while(list1!=null || list2!=null) //當都不為空則跑回圈
+        {
+            //System.out.println(curr.val);
+            // System.out.println(sol.val);
+            //System.out.println("--------");
+            if(list1!=null&&list2!=null)  //第一種情況 兩者都不為空
+            {
+                if(list1.val<=list2.val)  //哪個小就哪個先加
+                {
+                    curr.next = new ListNode(list1.val);
+                    curr = curr.next;
+                    list1 = list1.next;
+                }
+                else
+                {
+                    curr.next = new ListNode(list2.val);
+                    curr = curr.next;
+                    list2 = list2.next;
+                }
+            }
+            else if(list1!=null&&list2==null) //第二種情況 一為空二部為空
+            {
+                curr.next = new ListNode(list1.val);
+                curr = curr.next;
+                list1 = list1.next;
+            }
+            else
+            {
+                curr.next = new ListNode(list2.val);  //第三種情況 一為空二部為空
+                curr = curr.next;
+                list2 = list2.next;
+            }
+            
+        }
+        return head.next;
+    }
+}
