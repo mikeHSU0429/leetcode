@@ -1,0 +1,21 @@
+class Solution {
+    public int lengthOfLastWord(String s) {
+        int ans = 0;
+        for(int i = s.length()-1;i>=0;i--)  //從最後一個開始往前
+        {
+            if(s.charAt(i)!=' ')  //當遇到不是空格的 就是最後一個字
+            {
+                ans+=1;
+            }
+            else  //如果後面前幾個是空白 ans就會等於0 所以迴圈會繼續進行 直到count完最後一個字
+            {
+                if(ans>0)return ans;
+            }
+            
+        }
+        return ans;
+           
+
+         
+    }
+}
