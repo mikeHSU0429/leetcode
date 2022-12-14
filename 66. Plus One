@@ -1,0 +1,71 @@
+class Solution {
+    public int[] plusOne(int[] digits) { 方法一 設定carry進位
+        int carry = 0;
+        int start = digits.length-1;
+        if((digits[start]+1)%10!=0)   //如果沒進位 就直接加上去並回傳
+        {
+            digits[start]+=1;
+            return digits;
+        }
+        else
+        {
+        for(int i = start;i>=0;i--)   
+            {
+            if((digits[i]+1)%10==0 && i==start) //有進位第一種情況 是開頭 要將carry設為1
+                {
+                    digits[i]=0;
+                    carry = 1;
+                }
+            else if((digits[i]+carry)%10==0 && carry!=0)  //第二種情況 是中間
+                {
+                    digits[i]=0;
+                    carry = 1;
+                }
+            else    //第三種情況 並沒有再進位了 
+                {
+                    digits[i]+=1;
+                    carry = 0;
+                    break;
+                }
+                
+            }
+        if(carry!=0)  //判斷有無溢位
+        {
+            int []sol = new int[digits.length+1];
+            sol[0]=1;
+            for(int j = 1;j<sol.length;j++)
+            {
+                sol[j]=digits[j-1];
+            }
+            return sol;
+        }
+        else
+            return digits;
+
+        }
+        // for(int i = start ;i>=0;i--)
+        // {
+        //     if()
+        // }
+    }
+}
+    //     long sum = 0;      //方法二:將數字取出存入long並加總後放回陣列 但會造成溢位可能性 所以不考慮
+    //     int sqr = digits.length-1;
+    //     for(int i =0;i<digits.length;i++) //將數字取出並加總
+    //     {
+    //         sum+=digits[i]*Math.pow(10,sqr);
+    //         System.out.println("i= " + i +"sqr= "+sqr +"sum= "+sum);
+    //         sqr--;
+    //     }
+    //     sum+=1;
+        
+
+
+    //     String num = Long.toString(sum);
+    //     int array [] = new int[num.length()];
+    //     for(int j = 0;j<num.length();j++) //
+    //     {
+    //         array[j]= num.charAt(j)-48;
+    //         System.out.println(array[j]);
+    //     }
+    // return array;
